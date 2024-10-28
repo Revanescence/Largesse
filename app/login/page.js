@@ -1,4 +1,7 @@
+"use client"; 
+
 import React from 'react'
+import { useSession, signIn, signOut } from "next-auth/react"
 
 const Login = () => {
   return (
@@ -10,7 +13,7 @@ const Login = () => {
 
 <button
     className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+    <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="-0.5 0 48 48" version="1.1">
 
         <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -38,7 +41,7 @@ const Login = () => {
 
 <button
     className="flex items-center w-64 text-black bg-slate-50 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+    <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 -2 44 44" version="1.1">
         <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="Color-" transform="translate(-702.000000, -265.000000)" fill="#007EBB">
@@ -55,7 +58,7 @@ const Login = () => {
 
 <button
     className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+    <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 -4 48 48" version="1.1">
         <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="Color-" transform="translate(-300.000000, -164.000000)" fill="#00AAEC">
@@ -74,7 +77,7 @@ const Login = () => {
 
 <button
     className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+    <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 48 48" version="1.1">
         <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="Color-" transform="translate(-200.000000, -160.000000)" fill="#4460A0">
@@ -90,9 +93,9 @@ const Login = () => {
     <span>Continue with Facebook</span>
 </button>
 
-<button
+<button onClick={() =>{signIn("github")}}
     className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+    <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 73 73" version="1.1">
         <g id="team-collaboration/version-control/github" stroke="none" stroke-width="1" fill="none"
             fill-rule="evenodd">
@@ -116,7 +119,7 @@ const Login = () => {
 
 <button
     className="flex items-center w-64 text-black bg-slate-50 border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-    <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+    <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="-1.5 0 20 20" version="1.1">
         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="Dribbble-Light-Preview" transform="translate(-102.000000, -7439.000000)" fill="#000000">
