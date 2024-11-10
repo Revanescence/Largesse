@@ -13,40 +13,35 @@ const Dashboard = () => {
     const [form, setform] = useState({})
 
     useEffect(() => {
-        console.log(session)
-
         if (!session) {
             router.push('/login')
         }
-        else {
-            getData()
-        }
-    }, [])
+}, [router,session])
 
-    const getData = async () => {
-        let u = await fetchuser(session.user.name)
-        setform(u)
-    }
+    // const getData = async () => {
+    //     let u = await fetchuser(session.user.name)
+    //     setform(u)
+    // }
 
     const handleChange = (e) => {
         setform({ ...form, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = async (e) => {
+    // const handleSubmit = async (e) => {
 
-        let a = await updateProfile(e, session.user.name)
-        toast('Profile Updated', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-            });
-    }
+    //     let a = await updateProfile(e, session.user.name)
+    //     toast('Profile Updated', {
+    //         position: "top-right",
+    //         autoClose: 5000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //         transition: Bounce,
+    //         });
+    // }
 
 
 
@@ -71,7 +66,7 @@ const Dashboard = () => {
             <div className='container mx-auto py-5 px-6 '>
                 <h1 className='text-center my-5 text-3xl font-bold'>Welcome to your Dashboard</h1>
 
-                <form className="max-w-2xl mx-auto" action={handleSubmit}>
+                <form className="max-w-2xl mx-auto" >
 
                     <div className='my-2'>
                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>

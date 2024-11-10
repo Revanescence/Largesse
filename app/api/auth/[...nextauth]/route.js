@@ -3,6 +3,7 @@ import GitHubProvider from 'next-auth/providers/github';
 import mongoose from 'mongoose';
 import User from '@/models/User';
 import Payment from '@/models/Payment';
+import connectDb from '@/db/connectDb';
 
 export const authoptions =  NextAuth({
   providers: [
@@ -30,36 +31,32 @@ export const authoptions =  NextAuth({
   //   }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-       if(account.provider == "github") { 
-
-        const client = await mongoose.connect("mongodb://localhost:27017/largesse")
-       
-        // Check if the user already exists in the database
-        const currentUser =  User.findOne({email: email}) 
-        if(!currentUser){
-          // Create a new user
-           const newUser = await User.create({
-            email: user.email, 
-            username: user.email.split("@")[0], 
-          }) 
-          await newUser.save()
-          user.name = newUser.username  
+    async signIn({ user, account }) {
+      if (account.provider === "github") {
+        await connectDb();
+  
+        const currentUser = await User.findOne({ email: user.email });
+        if (!currentUser) {
+          // Create a new user if they don't exist in the database
+          const newUser = await User.create({
+            email: user.email,
+            username: user.email.split("@")[0],
+          });
+         
         } 
-        else{
-          user.name =currentUser.username
-        }
-        return true
-       }
+        return true;
+      }
     },
-    
-    async session({ session, user, token }) {
-      const dbUser = await User.findOne({email: session.user.email})
-      session.user.name = dbUser.username
-      return session
+  
+    async session({ session }) {
+      const dbUser = await User.findOne({ email: session.user.email });
+      console.log(dbUser)
+      if (dbUser) {
+        session.user.name = dbUser.username;
+      }
+      return session;
     },
-    
-  } 
+  },
 })
 
 
